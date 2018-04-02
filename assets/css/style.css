@@ -1,0 +1,42 @@
+body {
+    background-color: #fcf0e4;
+}
+
+h1 {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 80px;
+}
+
+.container {
+    background-color: white;
+    border: 1px solid #cccccc;
+    box-shadow: 0px 0px 20px #bbbbbb;
+}
+
+.card {
+    background-color: transparent;
+    border: 0px;
+}
+
+#instructions {
+    border: 2px dashed gray;
+}
+
+#time {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 40px;
+}
+
+#question-box {
+    background-color: #dddddd;
+}
+
+button {
+    align-content: center;
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 970px;
+    }
+}

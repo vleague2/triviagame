@@ -16,12 +16,73 @@
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <!-- Google fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Mina|Source+Sans+Pro" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker|Source+Sans+Pro" rel="stylesheet">
 
     <!-- Custom css -->
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
 </head>
 <body>
+
+    <!-- Container to house grid system -->
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h1 class="card-title text-center">
+                            Pusheen Trivia!
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 ml-3 mb-4">
+                <div class="card" id="instructions">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">
+                            How to Play
+                        </h5>
+                        <p class="card-text text-center" id="instr-text">
+                            How well do you know Pusheen? You'll have 15 seconds to answer each trivia question about Pusheen the cat. Good luck!
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card mt-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">
+                                Time Remaining
+                            </h5>
+                            <p class="card-text text-center" id="time">15</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-7 ml-auto mr-3">
+                <div class="card" id="question-box">
+                    <div class="card-body">
+                        <div class="card-title text-center">
+                            <h3 class="mb-5" id="question-head">
+                                Click to Play!
+                            </h3>
+                        </div>
+
+                        <div class="card-text text-center mb-4">
+                            <p id="question-ask">
+                            </p>
+                            <div id="buttons"></div>
+                            <button type="button" class="btn btn-light btn-lg" id="select"> Start</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
  
 
     <!-- Link to JQuery -->
