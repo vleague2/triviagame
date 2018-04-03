@@ -29,10 +29,12 @@ h1 {
 
 #question-box {
     background-color: #dddddd;
+    margin-bottom: 30px;
 }
 
 button {
     align-content: center;
+    margin-bottom: 10px;
 }
 
 @media (min-width: 1200px) {
