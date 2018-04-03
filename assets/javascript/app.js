@@ -16,6 +16,7 @@ var quizQuestions = [
         correct: 1,
         correctAnswer: function () {
             $("#question-head").text("Correct!");
+            $("#buttons").html("");
             rightCounter ++;
             setTimeout(startTimer, 3000);
         }
@@ -114,10 +115,22 @@ function nextQuestion(i) {
 
     // Append button divs for each question answer option
     $("#buttons").html(
-        ("<div><button type='button' class='btn btn-light btn-lg btn-block'>" + quizQuestions[i].option1 + "</button></div>") 
-        + ("<div><button type='button' class='btn btn-light btn-lg btn-block'>" + quizQuestions[i].option2 + "</button></div>") 
-        + ("<div><button type='button' class='btn btn-light btn-lg btn-block'>"+ quizQuestions[i].option3 + "</button></div>") 
-        + ("<div><button type='button' class='btn btn-light btn-lg btn-block'>"+ quizQuestions[i].option4 + "</button></div>") );
+        ("<div><button type='button' class='btn btn-light btn-lg btn-block' id='button-1' value='1'>" + quizQuestions[i].option1 + "</button></div>") 
+        + ("<div><button type='button' class='btn btn-light btn-lg btn-block' id='button-2' value='2'>" + quizQuestions[i].option2 + "</button></div>") 
+        + ("<div><button type='button' class='btn btn-light btn-lg btn-block' id='button-3' value='3'>"+ quizQuestions[i].option3 + "</button></div>") 
+        + ("<div><button type='button' class='btn btn-light btn-lg btn-block' id='button-4' value='4'>"+ quizQuestions[i].option4 + "</button></div>") );
+
+        console.log(quizQuestions[i].correct);
+    
+    $("#button-1, #button-2, #button-3, #button-4").click(function () {
+
+        if ($(this).val() == quizQuestions[i].correct) {
+            console.log("yup");
+            stop();
+            quizQuestions.correctAnswer; 
+
+        }
+    });
 }
 
 
