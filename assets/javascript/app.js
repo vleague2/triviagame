@@ -63,7 +63,15 @@ var intervalID;
 // function timesUp will 
     // show array.guessedwrong
     // show #select button but change text to Start over?
-
+function timesUp() {
+    $("#question-head").text("You're out of time!");
+    $("#buttons").html("");
+    $("#select").css('display', 'inline');
+    $("#select").text("Start over?");
+    $("#select").click(function() {
+        document.reload();
+    });
+}
 
 
 // function startTimer will USE SETINTERVAL!!!!
@@ -84,6 +92,7 @@ function count() {
 
     if (timer === 0) {
         stop();
+        timesUp();
     }
 }
 
@@ -97,12 +106,17 @@ function stop() {
     clearInterval(intervalID);
 }
 
+// function nextQuestion loads the content for the next question. currently super WET(tm)
 function nextQuestion() {
+
+    // Hide the #select button
     $("#select").css('display', 'none');
 
+    // Change the #question-head to the question 
     $("#question-head").text(quizQuestions.question1.question);
 
-    $("#buttons").append("<div><button type='button' class='btn btn-light btn-lg btn-block'>" + quizQuestions.question1.option1 + "</button></div>");
+    // Append button divs for each question answer option
+    $("#buttons").html("<div><button type='button' class='btn btn-light btn-lg btn-block'>" + quizQuestions.question1.option1 + "</button></div>");
 
     $("#buttons").append("<div><button type='button' class='btn btn-light btn-lg btn-block'>" + quizQuestions.question1.option2 + "</button></div>");
 
@@ -111,6 +125,10 @@ function nextQuestion() {
     $("#buttons").append("<div><button type='button' class='btn btn-light btn-lg btn-block'>"+ quizQuestions.question1.option4 + "</button></div>");
 }
 
+
+
+
+// Click listener on the #select button so that when the user clicks it, the game starts
 $("#select").click(function() {
     nextQuestion(), startTimer()
 });
