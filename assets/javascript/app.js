@@ -6,8 +6,8 @@
     // Answer option4
     // function: Display "Correct!" when guessed right and increment right counter. wait 3000 and then call startTimer and show next question
     // function: Display "Nope, it was X" when guessed wrong and increment wrong counter. wait 3000 and then call startTimer and show next question
-var quizQuestions = {
-    question1: {
+var quizQuestions = [
+    {
         question: "What breed of cat is Pusheen?",
         option1: "Domestic shorthair",
         option2: "British shorthair",
@@ -20,7 +20,7 @@ var quizQuestions = {
             setTimeout(startTimer, 3000);
         }
     },
-    question2: {
+    {
         question: "What type of coat does Pusheen have?",
         option1: "Tortoiseshell", 
         option2: "Grey bi-color",
@@ -29,7 +29,7 @@ var quizQuestions = {
         correct: 3
     },
 
-    question3: {
+    {
         question: "What year was Pusheen created?",
         option1: "2014",
         option2: "2010",
@@ -38,7 +38,7 @@ var quizQuestions = {
         correct: 2
     },
 
-    question4: {
+    {
         question: "What language is Pusheen's name derived from?",
         option1: "Malaysian",
         option2: "Arabic",
@@ -46,7 +46,7 @@ var quizQuestions = {
         option4: "Irish", 
         correct: 4
     }
-}
+]
 
 // Guessed right counter = 0
 var rightCounter = 0;
@@ -107,31 +107,39 @@ function stop() {
 }
 
 // function nextQuestion loads the content for the next question. currently super WET(tm)
-function nextQuestion() {
-
-    // Hide the #select button
-    $("#select").css('display', 'none');
+function nextQuestion(i) {
 
     // Change the #question-head to the question 
-    $("#question-head").text(quizQuestions.question1.question);
+    $("#question-head").text(quizQuestions[i].question);
 
     // Append button divs for each question answer option
-    $("#buttons").html("<div><button type='button' class='btn btn-light btn-lg btn-block'>" + quizQuestions.question1.option1 + "</button></div>");
-
-    $("#buttons").append("<div><button type='button' class='btn btn-light btn-lg btn-block'>" + quizQuestions.question1.option2 + "</button></div>");
-
-    $("#buttons").append("<div><button type='button' class='btn btn-light btn-lg btn-block'>"+ quizQuestions.question1.option3 + "</button></div>");
-
-    $("#buttons").append("<div><button type='button' class='btn btn-light btn-lg btn-block'>"+ quizQuestions.question1.option4 + "</button></div>");
+    $("#buttons").html(
+        ("<div><button type='button' class='btn btn-light btn-lg btn-block'>" + quizQuestions[i].option1 + "</button></div>") 
+        + ("<div><button type='button' class='btn btn-light btn-lg btn-block'>" + quizQuestions[i].option2 + "</button></div>") 
+        + ("<div><button type='button' class='btn btn-light btn-lg btn-block'>"+ quizQuestions[i].option3 + "</button></div>") 
+        + ("<div><button type='button' class='btn btn-light btn-lg btn-block'>"+ quizQuestions[i].option4 + "</button></div>") );
 }
 
 
 
 
+
+// GAME ITSELF~~~~~
+
+
+
 // Click listener on the #select button so that when the user clicks it, the game starts
 $("#select").click(function() {
-    nextQuestion(), startTimer()
+    // Hide the #select button
+    $("#select").css('display', 'none');
+
+    // call the nextQuestion function, starting at index 0 of the questions array
+    nextQuestion(0);
+    
+    // Call the startTimer function
+    startTimer();
 });
+
 
 
 
