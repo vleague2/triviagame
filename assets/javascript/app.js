@@ -6,6 +6,44 @@
     // Answer option4
     // function: Display "Correct!" when guessed right and increment right counter. wait 3000 and then call startTimer and show next question
     // function: Display "Nope, it was X" when guessed wrong and increment wrong counter. wait 3000 and then call startTimer and show next question
+var quizQuestions = [
+    question1 = {
+        question: "What breed of cat is Pusheen?",
+        option1: "Domestic shorthair",
+        option2: "British shorthair",
+        option3: "Russian blue",
+        option4: "Maine coon",
+        correct: 1
+    },
+    question2 = {
+        question: "What type of coat does Pusheen have?",
+        option1: "Tortoiseshell", 
+        option2: "Grey bi-color",
+        option3: "Grey Tabby",
+        option4: "Solid grey",
+        correct: 3
+    },
+
+    question3 = {
+        question: "What year was Pusheen created?",
+        option1: "2014",
+        option2: "2010",
+        option3: "2012",
+        option4: "2016",
+        correct: 2
+    },
+
+    question4 = {
+        question: "What language is Pusheen's name derived from?",
+        option1: "Malaysian",
+        option2: "Arabic",
+        option3: "French",
+        option4: "Irish", 
+        correct: 4
+    }
+]
+
+
 
 // Guessed right counter = 0
 
@@ -19,7 +57,7 @@
 
 // function almostUp will change the timer to red
 
-// function startTimer will setTimeout(almostUp, 10000);and setTimeout(timesUp, 15000);
+// function startTimer will USE SETINTERVAL!!!! setTimeout(almostUp, 10000);and setTimeout(timesUp, 15000);
 
 // function clearTimer will clearTimeout(almostUp); clearTimeout(timesUp);
 
