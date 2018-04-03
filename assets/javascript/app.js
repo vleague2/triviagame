@@ -19,6 +19,15 @@ var quizQuestions = [
             $("#buttons").html("");
             rightCounter ++;
             setTimeout(startTimer, 3000);
+            setTimeout(nextQuestion, 3000, 1);
+        },
+
+        wrongAnswer: function() {
+            $("#question-head").html("Wrong answer! It was Domestic shorthair.");
+            $("#buttons").html("");
+            wrongCounter ++;
+            setTimeout(startTimer, 3000);
+            setTimeout(nextQuestion, 3000, 1);
         }
     },
     {
@@ -125,10 +134,13 @@ function nextQuestion(i) {
     $("#button-1, #button-2, #button-3, #button-4").click(function () {
 
         if ($(this).val() == quizQuestions[i].correct) {
-            console.log("yup");
             stop();
-            quizQuestions.correctAnswer; 
+            quizQuestions[i].correctAnswer(); 
+        }
 
+        else {
+            stop();
+            quizQuestions[i].wrongAnswer();
         }
     });
 }
