@@ -1,3 +1,15 @@
+// Guessed right counter = 0
+var rightCounter = 0;
+
+// Guessed wrong counter = 0
+var wrongCounter = 0;
+
+// Timer display? starts at 15
+var timer = 15;
+
+// empty variable for us to fill later
+var intervalID;
+
 // Array of questions. Very long.
 var quizQuestions = [
     {
@@ -10,14 +22,14 @@ var quizQuestions = [
         correctAnswer: function () {
             $("#question-head").text("Correct!");
             $("#buttons").html("");
-            rightCounter ++;
+            rightCounter++;
             setTimeout(startTimer, 3000);
             setTimeout(nextQuestion, 3000, 1);
         },
         wrongAnswer: function() {
             $("#question-head").html("Wrong answer! It was Domestic shorthair.");
             $("#buttons").html("");
-            wrongCounter ++;
+            wrongCounter++;
             setTimeout(startTimer, 3000);
             setTimeout(nextQuestion, 3000, 1);
         }
@@ -32,14 +44,14 @@ var quizQuestions = [
         correctAnswer: function () {
             $("#question-head").text("Correct!");
             $("#buttons").html("");
-            rightCounter ++;
+            rightCounter++;
             setTimeout(startTimer, 3000);
             setTimeout(nextQuestion, 3000, 2);
         },
         wrongAnswer: function() {
             $("#question-head").html("Wrong answer! It was Grey Tabby.");
             $("#buttons").html("");
-            wrongCounter ++;
+            wrongCounter++;
             setTimeout(startTimer, 3000);
             setTimeout(nextQuestion, 3000, 2);
         }
@@ -54,14 +66,14 @@ var quizQuestions = [
         correctAnswer: function () {
             $("#question-head").text("Correct!");
             $("#buttons").html("");
-            rightCounter ++;
+            rightCounter++;
             setTimeout(startTimer, 3000);
             setTimeout(nextQuestion, 3000, 3);
         },
         wrongAnswer: function() {
             $("#question-head").html("Wrong answer! It was 2010.");
             $("#buttons").html("");
-            wrongCounter ++;
+            wrongCounter++;
             setTimeout(startTimer, 3000);
             setTimeout(nextQuestion, 3000, 3);
         }
@@ -76,14 +88,14 @@ var quizQuestions = [
         correctAnswer: function () {
             $("#question-head").text("Correct!");
             $("#buttons").html("");
-            rightCounter ++;
+            rightCounter++;
             setTimeout(startTimer, 3000);
             setTimeout(nextQuestion, 3000, 4);
         },
         wrongAnswer: function() {
             $("#question-head").html("Wrong answer! It was Irish.");
             $("#buttons").html("");
-            wrongCounter ++;
+            wrongCounter++;
             setTimeout(startTimer, 3000);
             setTimeout(nextQuestion, 3000, 4);
         }
@@ -98,14 +110,14 @@ var quizQuestions = [
         correctAnswer: function () {
             $("#question-head").text("Correct!");
             $("#buttons").html("");
-            rightCounter ++;
+            rightCounter++;
             setTimeout(startTimer, 3000);
             setTimeout(nextQuestion, 3000, 5);
         },
         wrongAnswer: function() {
             $("#question-head").html("Wrong answer! It was Over 9.4 million.");
             $("#buttons").html("");
-            wrongCounter ++;
+            wrongCounter++;
             setTimeout(startTimer, 3000);
             setTimeout(nextQuestion, 3000, 5);
         }
@@ -120,14 +132,14 @@ var quizQuestions = [
         correctAnswer: function () {
             $("#question-head").text("Correct!");
             $("#buttons").html("");
-            rightCounter ++;
+            rightCounter++;
             setTimeout(startTimer, 3000);
             setTimeout(nextQuestion, 3000, 6);
         },
         wrongAnswer: function() {
             $("#question-head").html("Wrong answer! It was Unbelievably cute.");
             $("#buttons").html("");
-            wrongCounter ++;
+            wrongCounter++;
             setTimeout(startTimer, 3000);
             setTimeout(nextQuestion, 3000, 6);
         }
@@ -142,14 +154,14 @@ var quizQuestions = [
         correctAnswer: function () {
             $("#question-head").text("Correct!");
             $("#buttons").html("");
-            rightCounter ++;
+            rightCounter++;
             setTimeout(startTimer, 3000);
             setTimeout(nextQuestion, 3000, 7);
         },
         wrongAnswer: function() {
             $("#question-head").html("Wrong answer! It was Chicago.");
             $("#buttons").html("");
-            wrongCounter ++;
+            wrongCounter++;
             setTimeout(startTimer, 3000);
             setTimeout(nextQuestion, 3000, 7);
         }
@@ -164,40 +176,20 @@ var quizQuestions = [
         correctAnswer: function () {
             $("#question-head").text("Correct!");
             $("#buttons").html("");
-            rightCounter ++;
+            rightCounter++;
+            setTimeout(displayResults, 3000);
         },
         wrongAnswer: function() {
             $("#question-head").html('Wrong answer! It was "You find yourself wishing your real cat was Pusheen"');
             $("#buttons").html("");
-            wrongCounter ++;
+            wrongCounter++;
+            setTimeout(displayResults, 3000);
         }
     }
 ]
 
-// Guessed right counter = 0
-var rightCounter = 0;
 
-// Guessed wrong counter = 0
-var wrongCounter = 0;
-
-// Timer display? starts at 15
-var timer = 15;
-
-// empty variable for us to fill later
-var intervalID;
-
-// function timesUp tells the user they've run out of time, empties the #buttons div, displays the #select button and rewrites the text so it asks if they want to start again, and if they click it reloads the page
-function timesUp() {
-    $("#question-head").text("You're out of time!");
-    $("#buttons").html("");
-    $("#select").css('display', 'inline');
-    $("#select").text("Start over?");
-    $("#select").click(function() {
-        document.reload();
-    });
-}
-
-// function startTimer will USE SETINTERVAL!!!!
+// function startTimer will set the timer value back to 15, display the timer value, change the color back to black if it had turned red, and call the count function every second
 function startTimer() {
     timer = 15;
     $("#time").text(timer);
@@ -205,7 +197,7 @@ function startTimer() {
     intervalID = setInterval(count, 1000);
 }
 
-// function count will decrement timer and display it
+// function count will decrement timer and display it. it will also call two functions based on the timer's value
 function count() {
     timer--;
     $("#time").text(timer);
@@ -220,17 +212,28 @@ function count() {
     }
 }
 
-// function almostUp will change the timer to red
+// function almostUp will change the timer to red which is SUPER COOL!!!
 function almostUp() {
     $("#time").css('color', 'red');
 }
 
-// function stop will stop the timer at 0
+// function timesUp tells the user they've run out of time, empties the #buttons div, displays the #select button and rewrites the text so it asks if they want to start again, and if they click it reloads the page
+function timesUp() {
+    $("#question-head").text("You're out of time!");
+    $("#buttons").html("");
+    $("#select").css('display', 'inline');
+    $("#select").text("Start over?");
+    $("#select").click(function() {
+        document.reload();
+    });
+}
+
+// function stop will stop the timer
 function stop() {
     clearInterval(intervalID);
 }
 
-// function nextQuestion loads the content for the next question. currently super WET(tm)
+// function nextQuestion loads the content for the next question based on a value that is passed in and will be used as an index number
 function nextQuestion(i) {
 
     // Change the #question-head to the question 
@@ -243,21 +246,52 @@ function nextQuestion(i) {
         + ("<div><button type='button' class='btn btn-light btn-lg btn-block' id='button-3' value='3'>"+ quizQuestions[i].option3 + "</button></div>") 
         + ("<div><button type='button' class='btn btn-light btn-lg btn-block' id='button-4' value='4'>"+ quizQuestions[i].option4 + "</button></div>") );
     
+    // listen for button clicks on any answer
     $("#button-1, #button-2, #button-3, #button-4").click(function () {
 
+        // if they click the button whose value matches the correct answer value in the object array....
         if ($(this).val() == quizQuestions[i].correct) {
+
+            // stop the timer and display the correctAnswer function for that question
             stop();
             quizQuestions[i].correctAnswer(); 
         }
 
+        // otherwise...
         else {
+
+            // 
             stop();
             quizQuestions[i].wrongAnswer();
         }
     });
 }
 
+// Function to display your results at the end of the game, with conditionals that classify the user's level of knowledge based on how many they got right
+function displayResults() {
+    if (rightCounter <=1) {
+        $("#question-head").text("You Don't Even Know Pusheen!");
+    }
+    
+    else if (rightCounter < 3) {
+        $("#question-head").text("You Need to Learn More about Pusheen!");
+    }
+    
+    else if (rightCounter < 7) {
+        $("#question-head").text("You're Almost a Pusheen Master");
+    }
 
+    else {
+        $("#question-head").text("You Love Pusheen!!");
+    }
+
+    $("#buttons").html("<p> Questions guessed correctly: " + rightCounter + "</p> <p> Questions guessed incorrectly: " + wrongCounter + "</p>")
+    $("#select").css('display', 'inline');
+    $("#select").text("Play again!");
+    $("#select").click(function() {
+        document.reload();
+    })
+}
 
 
 
@@ -270,43 +304,11 @@ $("#select").click(function() {
     // Hide the #select button
     $("#select").css('display', 'none');
 
-    // call the nextQuestion function, starting at index 0 of the questions array
+    // call the nextQuestion function, starting at index 0 of the questions array. the rest of the calls for this function happen inside each object's methods
     nextQuestion(0);
     
     // Call the startTimer function
     startTimer();
 });
-
-
-
-
-// function startGame will 
-    // call the startTimer function
-    // change #question-head to array.question
-    // Append four buttons to the #button div:
-        // <button type="button" class="btn btn-light btn-lg btn-block">array.answer1</button>
-        // Repeat for answer2, answer3, answer4
-    // Hide #select button (display:none?)
-    // Set guessed right and guessed wrong to 0
-
-    // while timer > 0 ??
-        // If answer1 is clicked, then....
-        // Else if answer2 is clicked, then...
-        // Else if answer3 is clicked, then...
-        // Else if answer4 is clicked, then...
-
-    // When you've reached the end of the questions array
-        // remove button divs
-        // if guessed right <=1, change #question-head to You Don't Even Know Pusheen!
-            // else if guessed right < 3, change #question-head to You Need to Learn More about Pusheen!    
-            // else if guessed right < 6, change #question-head to You're Almost a Pusheen Master     
-            // else if guessed right = array.length, change #question-head to You Love Pusheen!
-        // Make a new div and
-            // display guessed right counter with preface text "Correct answers:"
-            // display guessed wrong counter with preface text "Wrong answers:"
-        // show #select button and change text to "Play again?"
-        // If you click the select button, call startGame
-
-        
 
 
