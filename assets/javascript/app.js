@@ -20,14 +20,12 @@ var quizQuestions = [
         option4: "Maine coon",
         correct: 1,
         correctAnswer: function () {
-            $("#question-head").text("Correct!");
-            $("#buttons").html("");
-            rightCounter++;
+            correctDisplay();
             setTimeout(startTimer, 3000);
             setTimeout(nextQuestion, 3000, 1);
         },
         wrongAnswer: function() {
-            $("#question-head").html("Wrong answer! It was Domestic shorthair.");
+            $("#question-head").html("Wrong answer! It was " + this.option1);
             $("#buttons").html("");
             wrongCounter++;
             setTimeout(startTimer, 3000);
@@ -42,9 +40,7 @@ var quizQuestions = [
         option4: "Solid grey",
         correct: 3,
         correctAnswer: function () {
-            $("#question-head").text("Correct!");
-            $("#buttons").html("");
-            rightCounter++;
+            correctDisplay();
             setTimeout(startTimer, 3000);
             setTimeout(nextQuestion, 3000, 2);
         },
@@ -64,9 +60,7 @@ var quizQuestions = [
         option4: "2016",
         correct: 2,
         correctAnswer: function () {
-            $("#question-head").text("Correct!");
-            $("#buttons").html("");
-            rightCounter++;
+            correctDisplay();
             setTimeout(startTimer, 3000);
             setTimeout(nextQuestion, 3000, 3);
         },
@@ -86,9 +80,7 @@ var quizQuestions = [
         option4: "Irish", 
         correct: 4,
         correctAnswer: function () {
-            $("#question-head").text("Correct!");
-            $("#buttons").html("");
-            rightCounter++;
+            correctDisplay();
             setTimeout(startTimer, 3000);
             setTimeout(nextQuestion, 3000, 4);
         },
@@ -108,9 +100,7 @@ var quizQuestions = [
         option4: "Over 15 million",
         correct: 1,
         correctAnswer: function () {
-            $("#question-head").text("Correct!");
-            $("#buttons").html("");
-            rightCounter++;
+            correctDisplay();
             setTimeout(startTimer, 3000);
             setTimeout(nextQuestion, 3000, 5);
         },
@@ -130,9 +120,7 @@ var quizQuestions = [
         option4: "Unbelievably cute",        
         correct: 4,
         correctAnswer: function () {
-            $("#question-head").text("Correct!");
-            $("#buttons").html("");
-            rightCounter++;
+            correctDisplay();
             setTimeout(startTimer, 3000);
             setTimeout(nextQuestion, 3000, 6);
         },
@@ -152,9 +140,7 @@ var quizQuestions = [
         option4: "New York City",
         correct: 3,
         correctAnswer: function () {
-            $("#question-head").text("Correct!");
-            $("#buttons").html("");
-            rightCounter++;
+            correctDisplay();
             setTimeout(startTimer, 3000);
             setTimeout(nextQuestion, 3000, 7);
         },
@@ -174,9 +160,7 @@ var quizQuestions = [
         option4: "You find yourself wishing your real cat was Pusheen",
         correct: 4,
         correctAnswer: function () {
-            $("#question-head").text("Correct!");
-            $("#buttons").html("");
-            rightCounter++;
+            correctDisplay();
             setTimeout(displayResults, 3000);
         },
         wrongAnswer: function() {
@@ -195,6 +179,13 @@ function startTimer() {
     $("#time").text(timer);
     $("#time").css('color', 'black');
     intervalID = setInterval(count, 1000);
+}
+
+// function to display that the user has guessed correct answer and empty the button divs, and increment win count
+function correctDisplay() {
+    $("#question-head").text("Correct!");
+    $("#buttons").html("");
+    rightCounter++;
 }
 
 // function count will decrement timer and display it. it will also call two functions based on the timer's value
@@ -224,7 +215,7 @@ function timesUp() {
     $("#select").css('display', 'inline');
     $("#select").text("Start over?");
     $("#select").click(function() {
-        document.reload();
+        location.reload();
     });
 }
 
@@ -273,11 +264,11 @@ function displayResults() {
         $("#question-head").text("You Don't Even Know Pusheen!");
     }
     
-    else if (rightCounter < 3) {
+    else if (rightCounter <= 3) {
         $("#question-head").text("You Need to Learn More about Pusheen!");
     }
     
-    else if (rightCounter < 7) {
+    else if (rightCounter <= 7) {
         $("#question-head").text("You're Almost a Pusheen Master");
     }
 
@@ -289,7 +280,7 @@ function displayResults() {
     $("#select").css('display', 'inline');
     $("#select").text("Play again!");
     $("#select").click(function() {
-        document.reload();
+        location.reload();
     })
 }
 
