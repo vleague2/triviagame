@@ -18,6 +18,10 @@ h1 {
     border: 0px;
 }
 
+#small-pusheen {
+    margin-right: 8px;
+}
+
 #instructions {
     border: 2px dashed gray;
 }

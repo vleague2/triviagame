@@ -1,3 +1,5 @@
+// VARIABLES~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 // Guessed right counter = 0
 var rightCounter = 0;
 
@@ -26,7 +28,7 @@ var quizQuestions = [
         },
         wrongAnswer: function() {
             $("#question-head").html("Wrong answer! It was " + this.option1);
-            $("#buttons").html("");
+            pusheenWrong();
             wrongCounter++;
             setTimeout(startTimer, 3000);
             setTimeout(nextQuestion, 3000, 1);
@@ -46,7 +48,7 @@ var quizQuestions = [
         },
         wrongAnswer: function() {
             $("#question-head").html("Wrong answer! It was Grey Tabby.");
-            $("#buttons").html("");
+            pusheenWrong();
             wrongCounter++;
             setTimeout(startTimer, 3000);
             setTimeout(nextQuestion, 3000, 2);
@@ -66,7 +68,7 @@ var quizQuestions = [
         },
         wrongAnswer: function() {
             $("#question-head").html("Wrong answer! It was 2010.");
-            $("#buttons").html("");
+            pusheenWrong();
             wrongCounter++;
             setTimeout(startTimer, 3000);
             setTimeout(nextQuestion, 3000, 3);
@@ -86,7 +88,7 @@ var quizQuestions = [
         },
         wrongAnswer: function() {
             $("#question-head").html("Wrong answer! It was Irish.");
-            $("#buttons").html("");
+            pusheenWrong();
             wrongCounter++;
             setTimeout(startTimer, 3000);
             setTimeout(nextQuestion, 3000, 4);
@@ -106,7 +108,7 @@ var quizQuestions = [
         },
         wrongAnswer: function() {
             $("#question-head").html("Wrong answer! It was Over 9.4 million.");
-            $("#buttons").html("");
+            pusheenWrong();
             wrongCounter++;
             setTimeout(startTimer, 3000);
             setTimeout(nextQuestion, 3000, 5);
@@ -126,7 +128,7 @@ var quizQuestions = [
         },
         wrongAnswer: function() {
             $("#question-head").html("Wrong answer! It was Unbelievably cute.");
-            $("#buttons").html("");
+            pusheenWrong();
             wrongCounter++;
             setTimeout(startTimer, 3000);
             setTimeout(nextQuestion, 3000, 6);
@@ -146,7 +148,7 @@ var quizQuestions = [
         },
         wrongAnswer: function() {
             $("#question-head").html("Wrong answer! It was Chicago.");
-            $("#buttons").html("");
+            pusheenWrong();
             wrongCounter++;
             setTimeout(startTimer, 3000);
             setTimeout(nextQuestion, 3000, 7);
@@ -165,12 +167,15 @@ var quizQuestions = [
         },
         wrongAnswer: function() {
             $("#question-head").html('Wrong answer! It was "You find yourself wishing your real cat was Pusheen"');
-            $("#buttons").html("");
+            pusheenWrong();
             wrongCounter++;
             setTimeout(displayResults, 3000);
         }
     }
 ]
+
+
+// FUNCTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 // function startTimer will set the timer value back to 15, display the timer value, change the color back to black if it had turned red, and call the count function every second
@@ -184,8 +189,13 @@ function startTimer() {
 // function to display that the user has guessed correct answer and empty the button divs, and increment win count
 function correctDisplay() {
     $("#question-head").text("Correct!");
-    $("#buttons").html("");
+    $("#buttons").html("<img src='assets/images/pusheen_unicorn.png' width='250px'>");
     rightCounter++;
+}
+
+// function to display the pusheen image associated with wrong answer
+function pusheenWrong() { 
+    $("#buttons").html("<img src='assets/images/pusheen_box.png' width='250px'>");
 }
 
 // function count will decrement timer and display it. it will also call two functions based on the timer's value
@@ -211,7 +221,7 @@ function almostUp() {
 // function timesUp tells the user they've run out of time, empties the #buttons div, displays the #select button and rewrites the text so it asks if they want to start again, and if they click it reloads the page
 function timesUp() {
     $("#question-head").text("You're out of time!");
-    $("#buttons").html("");
+    $("#buttons").html("<img src='assets/images/pusheen_lay.png'>");
     $("#select").css('display', 'inline');
     $("#select").text("Start over?");
     $("#select").click(function() {
@@ -260,23 +270,29 @@ function nextQuestion(i) {
 
 // Function to display your results at the end of the game, with conditionals that classify the user's level of knowledge based on how many they got right
 function displayResults() {
-    if (rightCounter <=1) {
+    $("#buttons").html("<p> Questions guessed correctly: " + rightCounter + "</p> <p> Questions guessed incorrectly: " + wrongCounter + "</p>");
+
+    if (rightCounter == 0 || rightCounter == 1) {
         $("#question-head").text("You Don't Even Know Pusheen!");
+        $("#buttons").append("<p><img src='assets/images/pusheen_bread.png' width='250px'></p>")
     }
     
-    else if (rightCounter <= 3) {
+    else if (rightCounter == 2 || rightCounter == 3 || rightCounter == 4 ) {
         $("#question-head").text("You Need to Learn More about Pusheen!");
+        $("#buttons").append("<p><img src='assets/images/pusheen_pizza.png' width='250px'></p>")
     }
     
-    else if (rightCounter <= 7) {
+    else if (rightCounter == 5 || rightCounter == 6 || rightCounter == 7) {
         $("#question-head").text("You're Almost a Pusheen Master");
+        $("#buttons").append("<p><img src='assets/images/pusheen_pink.png' width='250px'></p>")
     }
 
     else {
         $("#question-head").text("You Love Pusheen!!");
+        $("#buttons").append("<p><img src='assets/images/pusheen_beautiful.png' width='250px'></p>")
     }
 
-    $("#buttons").html("<p> Questions guessed correctly: " + rightCounter + "</p> <p> Questions guessed incorrectly: " + wrongCounter + "</p>")
+    
     $("#select").css('display', 'inline');
     $("#select").text("Play again!");
     $("#select").click(function() {
@@ -284,11 +300,7 @@ function displayResults() {
     })
 }
 
-
-
-// GAME ITSELF~~~~~
-
-
+// GAME ITSELF~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 // Click listener on the #select button so that when the user clicks it, the game starts
 $("#select").click(function() {
