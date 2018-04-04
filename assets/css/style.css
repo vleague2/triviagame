@@ -63,6 +63,10 @@ button {
     h1 {
         font-size: 50px;
     }
+
+    .pusheen-q {
+        width: 150px;
+    }
 }
 
 /* Make the instructions and questions fit better on mobile (centered) */

@@ -17,3 +17,4 @@ How the game works:
 
 Limitations:
 1. The Javascript code is a bit of a mess! The object array holding the questions is rather long and contains repeated code.
+2. The page does some weird question display thing while it's reloading.

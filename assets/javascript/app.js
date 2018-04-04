@@ -189,13 +189,13 @@ function startTimer() {
 // function to display that the user has guessed correct answer and empty the button divs, and increment win count
 function correctDisplay() {
     $("#question-head").text("Correct!");
-    $("#buttons").html("<img src='assets/images/pusheen_unicorn.png' width='250px'>");
+    $("#buttons").html("<img src='assets/images/pusheen_unicorn.png' width='250px' class='pusheen-q'>");
     rightCounter++;
 }
 
 // function to display the pusheen image associated with wrong answer
 function pusheenWrong() { 
-    $("#buttons").html("<img src='assets/images/pusheen_box.png' width='250px'>");
+    $("#buttons").html("<img src='assets/images/pusheen_box.png' width='250px' class='pusheen-q'>");
 }
 
 // function count will decrement timer and display it. it will also call two functions based on the timer's value
@@ -221,7 +221,7 @@ function almostUp() {
 // function timesUp tells the user they've run out of time, empties the #buttons div, displays the #select button and rewrites the text so it asks if they want to start again, and if they click it reloads the page
 function timesUp() {
     $("#question-head").text("You're out of time!");
-    $("#buttons").html("<img src='assets/images/pusheen_lay.png' width='250px'>");
+    $("#buttons").html("<img src='assets/images/pusheen_lay.png' width='250px' class='pusheen-q'>");
     $("#select").css('display', 'inline');
     $("#select").text("Start over?");
     $("#select").click(function() {
@@ -274,22 +274,22 @@ function displayResults() {
 
     if (rightCounter == 0 || rightCounter == 1) {
         $("#question-head").text("You Don't Even Know Pusheen!");
-        $("#buttons").append("<p><img src='assets/images/pusheen_bread.png' width='250px'></p>")
+        $("#buttons").append("<p><img src='assets/images/pusheen_bread.png' width='250px' class='pusheen-q'></p>")
     }
     
     else if (rightCounter == 2 || rightCounter == 3 || rightCounter == 4 ) {
         $("#question-head").text("You Need to Learn More about Pusheen!");
-        $("#buttons").append("<p><img src='assets/images/pusheen_pizza.png' width='250px'></p>")
+        $("#buttons").append("<p><img src='assets/images/pusheen_pizza.png' width='250px' class='pusheen-q'></p>")
     }
     
     else if (rightCounter == 5 || rightCounter == 6 || rightCounter == 7) {
         $("#question-head").text("You're Almost a Pusheen Master");
-        $("#buttons").append("<p><img src='assets/images/pusheen_pink.png' width='250px'></p>")
+        $("#buttons").append("<p><img src='assets/images/pusheen_pink.png' width='250px' class='pusheen-q'></p>")
     }
 
     else {
         $("#question-head").text("You Love Pusheen!!");
-        $("#buttons").append("<p><img src='assets/images/pusheen_beautiful.png' width='250px'></p>")
+        $("#buttons").append("<p><img src='assets/images/pusheen_beautiful.png' width='250px' class='pusheen-q'></p>")
     }
 
     
