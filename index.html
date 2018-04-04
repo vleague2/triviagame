@@ -24,7 +24,9 @@
 <body>
 
     <!-- Container to house grid system -->
-    <div class="container mt-5">
+    <div class="container mt-5 mb-5">
+
+        <!-- Top row, which contains page title of Pusheen Trivia & pusheen book image -->
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
@@ -37,7 +39,10 @@
             </div>
         </div>
 
+        <!-- Second row, which contains everything else -->
         <div class="row">
+
+            <!-- Left column contains instructions and timer counter -->
             <div class="col-md-4 ml-3 mb-4">
                 <div class="card" id="instructions">
                     <div class="card-body">
@@ -57,23 +62,32 @@
                             <h5 class="card-title text-center">
                                 Time Remaining
                             </h5>
+
+                            <!-- This paragraph text will be updated with Javascript to display a counter -->
                             <p class="card-text text-center" id="time">15</p>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <!-- Right column contains trivia questions -->
             <div class="col-md-7 ml-auto mr-3">
                 <div class="card" id="question-box">
                     <div class="card-body">
                         <div class="card-title text-center">
+
+                            <!-- This question header will be changed multiple times with Javascript to house the questions themselves -->
                             <h3 class="mb-5 mt-3" id="question-head">
                                 Click to Play!
                             </h3>
                         </div>
 
                         <div class="card-text text-center mb-4">
+
+                            <!-- This div will have buttons appended to it in JS, which will house the question answer options-->
                             <div id="buttons"></div>
+
+                            <!-- This button displays on the home page and pops up a few other times to ask the user if they want to restart -->
                             <button type="button" class="btn btn-light btn-lg" id="select"> Start</button>
                         </div>
                     </div>

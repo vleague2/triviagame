@@ -1,48 +1,79 @@
+/* Adjusting the background color of the webpage */
 body {
     background-color: #fcf0e4;
 }
 
+/* Giving all h1 text a new font and size */
 h1 {
     font-family: 'Permanent Marker', cursive;
     font-size: 80px;
 }
 
+/* This container holds the game and is a different color than the background. it also has a border and a shadow */
 .container {
     background-color: white;
     border: 1px solid #cccccc;
     box-shadow: 0px 0px 20px #bbbbbb;
 }
 
+/* The cards are transparent so that they look more seamless */
 .card {
     background-color: transparent;
     border: 0px;
 }
 
+/* the image in the instructions was too close to the text! */
 #small-pusheen {
     margin-right: 8px;
 }
 
+/* The instructions box has a dashed border because it's cute */
 #instructions {
     border: 2px dashed gray;
 }
 
+/* The time counter has a new font, size, and color */
 #time {
     font-family: 'Permanent Marker', cursive;
     font-size: 40px;
+    color: black;
 }
 
+/* the box that houses the questions has a different background color than the container  */
 #question-box {
     background-color: #dddddd;
     margin-bottom: 30px;
 }
 
+/* The buttons are aligned center and have margin so that they aren't stacked too close */
 button {
     align-content: center;
     margin-bottom: 10px;
 }
 
+/* This is to make the container have a smaller max width than the document */
 @media (min-width: 1200px) {
     .container {
         max-width: 970px;
     }
+}
+
+/* Make the page title fit better on smaller screens */
+@media (max-width: 400px) {
+    h1 {
+        font-size: 50px;
+    }
+}
+
+/* Make the instructions and questions fit better on mobile (centered) */
+@media (max-width: 768px) {
+    #instructions {
+        margin-left: -15px;
+    }
+
+    #question-box {
+        margin-left: 10px;
+        margin-right: -10px;
+    }
+
 }
