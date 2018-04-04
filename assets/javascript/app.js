@@ -221,7 +221,7 @@ function almostUp() {
 // function timesUp tells the user they've run out of time, empties the #buttons div, displays the #select button and rewrites the text so it asks if they want to start again, and if they click it reloads the page
 function timesUp() {
     $("#question-head").text("You're out of time!");
-    $("#buttons").html("<img src='assets/images/pusheen_lay.png'>");
+    $("#buttons").html("<img src='assets/images/pusheen_lay.png' width='250px'>");
     $("#select").css('display', 'inline');
     $("#select").text("Start over?");
     $("#select").click(function() {
